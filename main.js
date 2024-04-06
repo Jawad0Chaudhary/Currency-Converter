@@ -20,13 +20,13 @@ let userAnswer = await inquirer.prompt([
         name: "from",
         message: chalk.yellow("Enter From Currency"),
         type: "list",
-        choices: ["USD", "EUR", "GBP", "INR", "PKR", "KWD", "BHD", "OMR", "JPY", "BDT", "CNY"],
+        choices: ["USD", "EUR", "GBP", "INR", "PKR", "KWD", "BHD", "OMR", "JPY", "BDT", "CNY", "_____"],
     },
     {
         name: "to",
         message: chalk.yellow("Enter To Currency"),
         type: "list",
-        choices: ["USD", "EUR", "GBP", "INR", "PKR", "KWD", "BHD", "OMR", "JPY", "BDT", "CNY"],
+        choices: ["USD", "EUR", "GBP", "INR", "PKR", "KWD", "BHD", "OMR", "JPY", "BDT", "CNY", "_____"],
     },
     {
         name: "amount",
@@ -41,4 +41,10 @@ let amount = userAnswer.amount;
 //CALCULATING OR CONVERTING AMOUNT TO DESIRED CURRENCY
 let baseAmount = amount / fromAmount; //USD base currency / from amount
 let convertedAmount = Math.floor(baseAmount * toAmount); //Usd base currency Multiply to amount
+if (userAnswer.from === "_____") {
+    console.log((chalk.redBright("Please Select Appropriate Currency!")));
+}
+else if (userAnswer.to === "_____") {
+    console.log((chalk.redBright("Please Select Appropriate Currency!")));
+}
 console.log(chalk.blueBright("Coverted Amount Is:") + chalk.green(convertedAmount));
